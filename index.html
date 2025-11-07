@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factoriales</title>
+</head>
+<body>
+
+<h1>Factoriales - CH 59 </h1>
+
+<input type="number" id="numberInput" min="0" step="1" />
+<button id="calcBtn">Calcular Factor</button>
+
+<div id="result"></div>
+
+<script>
+
+function factorial(n) {
+
+    if (!Number.isInteger(n) || n < 0) {
+        throw new Error("Error");
+    }
+
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+
+const inputElem = document.getElementById('numberInput');
+const button   = document.getElementById('calcBtn');
+const output   = document.getElementById('result');
+
+button.addEventListener('click', () => {
+    const num = Number(inputElem.value.trim());
+
+    try {
+        const fact = factorial(num);
+    
+        console.log("El numero" + num + "es" + fact);
+        
+        output.textContent = `El factorial de ${num} es ${fact}`;
+    } catch (e) {
+    }
+});
+
+</script>
+</body>
+</html>
